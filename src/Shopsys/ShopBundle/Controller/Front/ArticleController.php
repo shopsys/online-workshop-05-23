@@ -8,7 +8,7 @@ use Shopsys\FrameworkBundle\Model\Article\ArticleFacade;
 class ArticleController extends FrontBaseController
 {
     /**
-     * @var \Shopsys\FrameworkBundle\Model\Article\ArticleFacade
+     * @var \Shopsys\ShopBundle\Model\Article\ArticleFacade
      */
     private $articleFacade;
 
@@ -26,9 +26,11 @@ class ArticleController extends FrontBaseController
     public function detailAction($id)
     {
         $article = $this->articleFacade->getVisibleById($id);
+        $products = $this->articleFacade->getProductsByArticle($article);
 
         return $this->render('@ShopsysShop/Front/Content/Article/detail.html.twig', [
             'article' => $article,
+            'products' => $products,
         ]);
     }
 

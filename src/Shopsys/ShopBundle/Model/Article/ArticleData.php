@@ -12,10 +12,16 @@ class ArticleData extends BaseArticleData
      */
     public $createdAt;
 
+    /**
+     * @var \Shopsys\ShopBundle\Model\Product\Product[]
+     */
+    public $products;
+
     public function __construct()
     {
         parent::__construct();
 
         $this->createdAt = new DateTime();
+        $this->products = [];
     }
 }
